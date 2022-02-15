@@ -27,8 +27,13 @@ class AliyunAmqpConnectionPool extends AmqpConnectionPool
     {
         $this->config['host'] = $this->aliyunAMQPConfig['endpoint'];
         $this->config['port'] = 5672;
-        $this->config['user'] = $this->getUser();
-        $this->config['password'] = $this->getPassword();
+        if ($this->aliyunAMQPConfig['mode'] === 'aliyunAMQP') {
+            $this->config['user'] = $this->getUser();
+            $this->config['password'] = $this->getPassword();
+        } else {
+            $this->config['user'] = $this->aliyunAMQPConfig['user'];
+            $this->config['password'] = $this->aliyunAMQPConfig['password'];
+        }
 
         return new Connection($this->container, $this, $this->config);
     }

@@ -1,6 +1,6 @@
 ## 安装
 ```
-composer require hooklife/hyperf-aliyun-amqp
+composer require lnys/hyperf-aliyun-amqp
 ```
 
 ## 使用方法
